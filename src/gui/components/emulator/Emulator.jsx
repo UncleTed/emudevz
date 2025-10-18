@@ -178,23 +178,27 @@ export default class Emulator extends Component {
 		const saveFileBytes = this._loadSaveFile();
 
 		const savedata = store.getState().savedata;
-		this._emulation = new Emulation(
-			Console,
-			bytes,
-			saveFileBytes,
-			screen,
-			this._getInput,
-			this._setFps,
-			this._setError,
-			onFrame,
-			saveState,
-			volume,
-			syncToVideo || savedata.emulatorSettings.syncToVideo,
-			savedata.emulatorSettings.audioBufferSize
-		);
+		try {
+			this._emulation = new Emulation(
+				Console,
+				bytes,
+				saveFileBytes,
+				screen,
+				this._getInput,
+				this._setFps,
+				this._setError,
+				onFrame,
+				saveState,
+				volume,
+				syncToVideo || savedata.emulatorSettings.syncToVideo,
+				savedata.emulatorSettings.audioBufferSize
+			);
 
-		onStart?.(this._emulation);
-		bus.emit("emulator-started");
+			onStart?.(this._emulation);
+			bus.emit("emulator-started");
+		} catch (e) {
+			this._setError(e);
+		}
 	}
 
 	async _buildConsole() {
