@@ -299,6 +299,14 @@ class HomeScreen extends PureComponent {
 	};
 
 	_play = () => {
+		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		const isSafari = /^((?!chrome|chromium|android).)*safari/i.test(userAgent);
+		if (isSafari) {
+			alert(
+				"Sorry, Safari has known issues that break the game. Please use a Chromium-based browser or Firefox."
+			);
+		}
+
 		switch (this.props.gameMode) {
 			case "free":
 				return this._playFreeMode();
