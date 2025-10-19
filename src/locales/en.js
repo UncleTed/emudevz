@@ -7,7 +7,7 @@ export default {
 	_trailer: "Trailer",
 	also: "also",
 	apu: "APU",
-	backup: "Backup",
+	backup: "Back up",
 	binary: "Binary",
 	buffer_size: "Buffer size",
 	button_play: "✨ Play",
