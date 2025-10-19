@@ -62,6 +62,7 @@ export default class Debugger_Memory {
 		this._memoryEditor.OptAddrDigitsCount = 4;
 		this._memoryEditor.ReadFn = (__, address) => {
 			const region = REGIONS[this._memRegion];
+			address += region.start;
 
 			const neees = window.EmuDevz.emulation?.neees;
 			if (!neees) return 0;
