@@ -1460,6 +1460,10 @@ it("`PulseChannel`: `sample()` just returns the <last sample> if the channel is 
   if (lastSample2 === 0)
     throw new Error("The first 10 samples of pulse 2 were 0.");
 
+  // spy oscillators
+  sinon.spy(apu.channels.pulses[0].oscillator, "sample");
+  sinon.spy(apu.channels.pulses[1].oscillator, "sample");
+
   // disable all channels
   apu.registers.apuControl.setValue(0);
 
@@ -1476,10 +1480,12 @@ it("`PulseChannel`: `sample()` just returns the <last sample> if the channel is 
     lastSample1,
     "[0].sample()"
   );
+  expect(apu.channels.pulses[0].oscillator.sample).to.not.have.been.called;
   expect(apu.channels.pulses[1].sample()).to.equalN(
     lastSample2,
     "[1].sample()"
   );
+  expect(apu.channels.pulses[1].oscillator.sample).to.not.have.been.called;
 
   // they shouldn't update the oscillator frequency
   const pulse1Frequency = Math.floor(
@@ -1529,6 +1535,10 @@ it("`PulseChannel`: `sample()` just returns the <last sample> if the length coun
   if (lastSample2 === 0)
     throw new Error("The first 10 samples of pulse 2 were 0.");
 
+  // spy oscillators
+  sinon.spy(apu.channels.pulses[0].oscillator, "sample");
+  sinon.spy(apu.channels.pulses[1].oscillator, "sample");
+
   // set another timer value
   apu.channels.pulses[0].timer = 123;
   apu.channels.pulses[0].timer = 456;
@@ -1546,10 +1556,12 @@ it("`PulseChannel`: `sample()` just returns the <last sample> if the length coun
     lastSample1,
     "[0].sample()"
   );
+  expect(apu.channels.pulses[0].oscillator.sample).to.not.have.been.called;
   expect(apu.channels.pulses[1].sample()).to.equalN(
     lastSample2,
     "[1].sample()"
   );
+  expect(apu.channels.pulses[1].oscillator.sample).to.not.have.been.called;
 
   // they shouldn't update the oscillator frequency
   const pulse1Frequency = Math.floor(
