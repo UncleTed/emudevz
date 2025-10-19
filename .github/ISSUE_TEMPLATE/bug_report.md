@@ -15,7 +15,7 @@ assignees: ''
 
 ### Save file
 <!-- ⚠️ Please include a copy of your save file (a `*.devz` file) so we can reproduce the problem. You can export it in **Settings** -> **Save file** -> **Backup**. ⚠️ -->
-<!-- If GitHub doesn't allow the attachment, use an external file hosting and link it here. ⚠️ -->
+<!-- If GitHub doesn't allow the attachment, use an external file hosting and link it here. -->
 
 ### Steps to reproduce
 
