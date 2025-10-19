@@ -391,7 +391,7 @@ code {
 	width: 100dvw;
 	height: 100dvh;
 	display: none;
-	z-index: 999;
+	z-index: 999999;
 	background: #000;
 	color: #fff;
 	font-family: monospace;
