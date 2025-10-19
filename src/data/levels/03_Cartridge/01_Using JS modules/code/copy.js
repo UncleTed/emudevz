@@ -17,7 +17,7 @@
 	["ppu_mapper_irq.neees", true],
 	["ppu_masking.neees", true],
 	["ppu_palette_ram.neees", true],
-	["ppu_palette_ram.txt", true],
+	["ppu_palette_ram.txt", false],
 	["ppu_road.neees", true],
 	["ppu_split_statusbar.neees", true],
 	["ppu_sprite0hit.neees", true],
