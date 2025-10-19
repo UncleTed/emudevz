@@ -432,11 +432,13 @@ it("`Controller`: with strobe <off>, `onRead()` advances through the sequence", 
   const expectedC1 = [1, 0, 1, 0, 1, 0, 1, 0];
   for (let i = 0; i < 8; i++) {
     expect(c1.onRead()).to.equalN(expectedC1[i], `c1.onRead() #${i}`);
+    expect(c1.cursor).to.equalN(i + 1, "c1.cursor");
   }
 
   const expectedC2 = [0, 0, 0, 0, 1, 1, 1, 1];
   for (let i = 0; i < 8; i++) {
     expect(c2.onRead()).to.equalN(expectedC2[i], `c2.onRead() #${i}`);
+    expect(c2.cursor).to.equalN(i + 1, "c2.cursor");
   }
 })({
   locales: {
