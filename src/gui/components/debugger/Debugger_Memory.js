@@ -61,8 +61,15 @@ export default class Debugger_Memory {
 		this._memoryEditor.ReadOnly = true; // (this prevents a crash!)
 		this._memoryEditor.OptAddrDigitsCount = 4;
 		this._memoryEditor.ReadFn = (__, address) => {
+			const region = REGIONS[this._memRegion];
+
 			const neees = window.EmuDevz.emulation?.neees;
 			if (!neees) return 0;
+
+			if (region.label === "PPU OAM RAM")
+				return widgets.numberOr0(neees.ppu.memory?.oamRam?.[address] ?? 0);
+			else if (region.label.startsWith("PPU"))
+				return widgets.numberOr0(neees.ppu.memory?.read?.(address) ?? 0);
 
 			// reimplementing some memory-mapped reads to avoid triggering side effects
 
