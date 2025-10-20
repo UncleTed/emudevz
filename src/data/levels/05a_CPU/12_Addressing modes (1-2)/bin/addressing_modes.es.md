@@ -24,9 +24,9 @@
 
 <hr>
 
-**(\*)** Estos modos de direccionamiento definen la _salida_ como la suma de una _dirección base_ y un desplazamiento, agregando `N` ciclos extra (`cpu.extraCycles += N`) si cruzan páginas. Esto es, cuando la _dirección base_ y la _salida_ difieren en su byte más significativo.
+**(\*)** Estos modos de direccionamiento definen la _salida_ como la suma de una _dirección base_ y un desplazamiento, agregando `N` ciclos extra (`cpu.extraCycles += N`) si se cruza un límite de página. Esto es, cuando la _dirección base_ y la _salida_ difieren en su byte más significativo.
 
 - En el modo **Relative**, `N` = 2
 - En los modos **indexados**, `N` = 1
 
-⚠️ No todos los opcodes tienen esta penalidad al cruzar de página, por lo que los modos de direccionamiento reciben un booleano `hasPageCrossPenalty` que indica si los ciclos extra deberían ser agregados.
+⚠️ No todos los opcodes tienen esta penalización por cruce de página, por lo que los modos de direccionamiento reciben un booleano `hasPageCrossPenalty` que indica si se deben agregar ciclos extra cuando se cruza un límite de página.
