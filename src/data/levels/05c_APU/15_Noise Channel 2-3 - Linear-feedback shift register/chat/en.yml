@@ -38,7 +38,7 @@ exercise:
         **->** change the <main return value> from ```javascript Math.floor(...)``` to just `volume`
       **step()**:
         **->** increments the <divider count>
-        **->** if the <divider count> reaches ```javascript noisePeriods[this.registers.form.periodId]```:
+        **->** if the <divider count> is >= ```javascript noisePeriods[this.registers.form.periodId]```:
           (you can get `noisePeriods` from 📄  ~/lib/apu/noisePeriods.js~)
           **->** resets the <divider count>
         **->** else:

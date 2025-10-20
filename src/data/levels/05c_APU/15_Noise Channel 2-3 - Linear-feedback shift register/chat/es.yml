@@ -38,7 +38,7 @@ exercise:
         **->** cambia el <valor de retorno principal> de ```javascript Math.floor(...)``` a solo `volume`
       **step()**:
         **->** incrementa el <contador del divisor>
-        **->** si el <contador del divisor> alcanza ```javascript noisePeriods[this.registers.form.periodId]```:
+        **->** si el <contador del divisor> es >= ```javascript noisePeriods[this.registers.form.periodId]```:
           (puedes obtener `noisePeriods` de 📄  ~/lib/apu/noisePeriods.js~)
           **->** reinicia el <contador del divisor>
         **->** si no:
