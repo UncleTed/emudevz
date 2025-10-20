@@ -24,5 +24,5 @@
 </div>
 
 - El sample de salida del canal es el **volumen de la envolvente**, o `0` si se cumple alguna de estas condiciones:
-  - el bit `0` del registro de desplazamiento está activo
+  - el bit `0` del registro de desplazamiento está encendido
   - el contador de longitud es `0`

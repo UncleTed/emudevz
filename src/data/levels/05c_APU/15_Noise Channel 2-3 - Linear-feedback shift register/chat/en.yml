@@ -32,9 +32,9 @@ exercise:
       **constructor(apu)**:
         **->** sets ```javascript this.shift = 1```
         **->** sets ```javascript this.dividerCount = 0```
-      **sample(value)**:
-        **->** make the <early return> also check for ```javascript !(this.shift & 1)```
-          (the output sample is 0 if the <shift register>'s first bit is 0)
+      **sample()**:
+        **->** make the <early return> also check for ```javascript (this.shift & 1)```
+          (the output sample is 0 if the <shift register>'s first bit is set)
         **->** change the <main return value> from ```javascript Math.floor(...)``` to just `volume`
       **step()**:
         **->** increments the <divider count>
