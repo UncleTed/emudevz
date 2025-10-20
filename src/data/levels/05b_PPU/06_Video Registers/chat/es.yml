@@ -41,7 +41,7 @@ exercise:
   - 📚  crea una clase `VideoRegisters`, utilizando esa plantilla
   - |-
     📚  agrega una propiedad `registers` a 🖥️  `PPU`, asignada a:
-         ```javascript new VideoRegisters(this)```
+      ```javascript new VideoRegisters(this)```
   - |-
     📚  finalmente, mapéalos en 🐏  `CPUMemory` (regiones $2000-$2007 y $4014):
       - las <lecturas> deberían retornar ```javascript this.ppu.registers.read(address)```

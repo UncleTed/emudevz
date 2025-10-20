@@ -28,11 +28,11 @@ exercise:
     📚  and change this one on 🖥️  `PPU`:
     **step(onFrame, onInterrupt)**:
       **->** if ```javascript this.scanline``` is ~-1~:
-        **->** call ```javascript this._onPreLine()```
+        **->** calls ```javascript this._onPreLine()```
       **->** if ```javascript this.scanline``` is lower than 240:
-        **->** call ```javascript this._onVisibleLine()```
+        **->** calls ```javascript this._onVisibleLine()```
       **->** if ```javascript this.scanline``` is 241:
-        **->** call ```javascript this._onVBlankLine(onInterrupt)```
+        **->** calls ```javascript this._onVBlankLine(onInterrupt)```
       **->** __...rest of the code...__
       **[!]** note that we added an `onInterrupt` parameter
   - |-

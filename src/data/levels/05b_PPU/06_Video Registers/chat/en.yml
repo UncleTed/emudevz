@@ -41,7 +41,7 @@ exercise:
   - 📚  create a `VideoRegisters` class, using that template
   - |-
     📚  add a `registers` property to 🖥️  `PPU`, assigned to:
-         ```javascript new VideoRegisters(this)```
+      ```javascript new VideoRegisters(this)```
   - |-
     📚  lastly, map them in 🐏  `CPUMemory` (regions $2000-$2007 and $4014):
       - <reads> should return ```javascript this.ppu.registers.read(address)```

@@ -19,7 +19,7 @@ exercise:
     **constructor(cpu)**:
       **->** instantiates the background renderer:
         ```javascript this.backgroundRenderer = new BackgroundRenderer(this)```
-      (remember to import it if you defined it in another file!)
+        (remember to import it if you defined it in another file!)
     **step(...)**:
       **->** remove the test code (```javascript // <test>...</test>```)
     **_onVisibleLine()**:

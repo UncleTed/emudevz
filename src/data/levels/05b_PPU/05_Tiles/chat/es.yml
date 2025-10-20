@@ -23,7 +23,7 @@ main:
         ```javascript this._highRow``` = leer dirección PPU ```javascript highPlaneAddress + y```
     **getColorIndex(x)**:
       **->** determina la posición del bit que corresponde a `x` (un número entre 0 y 7)
-        ten en cuenta que ~x=0~ es el píxel más a la izquierda, y eso sería ~bit 7~
+        (ten en cuenta que ~x=0~ es el píxel más a la izquierda, y eso sería ~bit 7~)
       **->** toma ese bit de ```javascript this._lowRow``` y ```javascript this._highRow``` usando `byte.getBit(...)`
       **->** retorna el índice de color resultante, combinando los dos bits con `byte.buildU2(...)`
   responses:

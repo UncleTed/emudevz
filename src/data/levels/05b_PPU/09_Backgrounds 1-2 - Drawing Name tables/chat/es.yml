@@ -19,7 +19,7 @@ exercise:
     **constructor(cpu)**:
       **->** instancia el renderizador de fondos:
         ```javascript this.backgroundRenderer = new BackgroundRenderer(this)```
-      (¡recuerda importarlo si lo definiste en otro archivo!)
+        (¡recuerda importarlo si lo definiste en otro archivo!)
     **step(...)**:
       **->** elimina el código de prueba (```javascript // <test>...</test>```)
     **_onVisibleLine()**:

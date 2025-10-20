@@ -25,12 +25,12 @@ exercise:
     **constructor(cpu)**:
       **->** instantiates the sprite renderer:
         ```javascript this.spriteRenderer = new SpriteRenderer(this)```
-      (remember to import it if you defined it in another file!)
+        (remember to import it if you defined it in another file!)
   - |-
     📚  now, in the 🛸  `SpriteRenderer` class, define:
     **_createSprite(id)**:
       **->** returns a new `Sprite` instance, by reading the OAM index `id`
-      (remember to add 1 to the Y coordinate!)
+        (remember to add 1 to the Y coordinate!)
   responses:
   - (*) why should I add 1 to the Y coordinate? ➕ [addone]
   - (*) how do I know if the sprite is ~8x8~ or ~8x16~? 📏 [spritesize]
