@@ -546,7 +546,7 @@ it("maps the $4016 <reads/writes> and $4017 <reads> to the controllers", () => {
   cpuMemory.read(0x4016).should.equal(123, "read(0x4016)");
   expect(controller1.onRead).to.have.been.calledOnce;
 
-  cpuMemory.read(0x4017).should.equal(345, "read(0x4016)");
+  cpuMemory.read(0x4017).should.equal(345, "read the bus at address (0x4017)");
   expect(controller2.onRead).to.have.been.calledOnce;
 
   cpuMemory.write(0x4016, 43);
