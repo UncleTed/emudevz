@@ -32,13 +32,13 @@ exercise:
       **constructor(apu)**:
         **->** asigna ```javascript this.shift = 1```
         **->** asigna ```javascript this.dividerCount = 0```
-      **sample(value)**:
-        **->** haz que el <return temprano> también revise ```javascript !(this.shift & 1)```
-          (el sample de salida es 0 si el primer bit del <registro de desplazamiento> es 0)
+      **sample()**:
+        **->** haz que el <return temprano> también revise ```javascript (this.shift & 1)```
+          (el sample de salida es 0 si el primer bit del <registro de desplazamiento> está encendido)
         **->** cambia el <valor de retorno principal> de ```javascript Math.floor(...)``` a solo `volume`
       **step()**:
         **->** incrementa el <contador del divisor>
-        **->** si el <contador del divisor> alcanza ```javascript noisePeriods[this.registers.form.periodId]```:
+        **->** si el <contador del divisor> es >= ```javascript noisePeriods[this.registers.form.periodId]```:
           (puedes obtener `noisePeriods` de 📄  ~/lib/apu/noisePeriods.js~)
           **->** reinicia el <contador del divisor>
         **->** si no:

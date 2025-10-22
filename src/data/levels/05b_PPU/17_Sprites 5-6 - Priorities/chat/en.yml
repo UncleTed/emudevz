@@ -70,7 +70,7 @@ exercise:
               ```javascript this.ppu.isBackgroundPixelOpaque(element.x, y);```
               (let's call this `isBGOpaque`)
             **->** if ```javascript isInFront || !isBGOpaque```:
-              **->** call ```javascript this.ppu.plot(element.x, y, element.color);```
+              **->** calls ```javascript this.ppu.plot(element.x, y, element.color);```
   responses: []
 
 corollary:

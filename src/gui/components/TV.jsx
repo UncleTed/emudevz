@@ -57,6 +57,7 @@ export default class TV extends PureComponent {
 	}
 
 	setContent(content, type, name = null, extra = {}) {
+		this.runner?.stop();
 		this.setState({
 			content,
 			type,

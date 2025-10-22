@@ -210,7 +210,7 @@ class PPUMemory {
 		/* TODO: IMPLEMENT */
 
 		// 🚽 Mirrors of $2000-$2EFF
-		if (address >= 0x3000 && address <= 0xeff)
+		if (address >= 0x3000 && address <= 0x3eff)
 			return this.read(0x2000 + ((address - 0x3000) % 0x1000));
 
 		// 🎨 Palette RAM
@@ -232,7 +232,7 @@ class PPUMemory {
 		/* TODO: IMPLEMENT */
 
 		// 🚽 Mirrors of $2000-$2EFF
-		if (address >= 0x3000 && address <= 0xeff)
+		if (address >= 0x3000 && address <= 0x3eff)
 			return this.write(0x2000 + ((address - 0x3000) % 0x1000), value);
 
 		// 🎨 Palette RAM
