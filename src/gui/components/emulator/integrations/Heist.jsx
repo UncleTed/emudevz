@@ -12,7 +12,11 @@ export default class MinekartMadness extends Integration {
 
 		return (
 			<Tooltip
-				title={`${locales.get("integration_heist_wave")} ${wave} / ${WIN_WAVE}`}
+				title={
+					percentage === 100
+						? undefined
+						: `${locales.get("integration_heist_wave")} ${wave} / ${WIN_WAVE}`
+				}
 			>
 				<div
 					style={{ width: "50%", textAlign: "center", whiteSpace: "nowrap" }}

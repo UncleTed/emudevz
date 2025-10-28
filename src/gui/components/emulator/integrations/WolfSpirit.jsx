@@ -12,9 +12,13 @@ export default class WolfSpirit extends Integration {
 
 		return (
 			<Tooltip
-				title={`${locales.get("integration_wolfspirit_level")} ${
-					1 + level
-				} / ${WIN_LEVEL}`}
+				title={
+					percentage === 100
+						? undefined
+						: `${locales.get("integration_wolfspirit_level")} ${
+								1 + level
+						  } / ${WIN_LEVEL}`
+				}
 			>
 				<div
 					style={{ width: "50%", textAlign: "center", whiteSpace: "nowrap" }}
@@ -56,4 +60,4 @@ export default class WolfSpirit extends Integration {
 	};
 }
 
-const WIN_LEVEL = 10;
+const WIN_LEVEL = 9;

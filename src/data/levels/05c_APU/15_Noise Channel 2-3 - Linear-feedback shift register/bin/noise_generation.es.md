@@ -1,6 +1,7 @@
 # Generación de Ruido
 
 - El 💥 Canal Ruido tiene un **registro de desplazamiento** de 15 bits que se activa periódicamente.
+- Al **encender la NEEES**, el registro de desplazamiento se carga con el valor `1`.
 - El bit `7` de 🌪️ NoiseForm es la **bandera de modo**, que afecta el patrón de ruido.
 - Los bits `0-3` de 🌪️ NoiseForm forman un índice a una tabla fija de "períodos de ruido", que es:
 

@@ -1842,14 +1842,14 @@ it("resets `PPUStatus::sprite0Hit` on ~scanline=-1~, ~cycle=1~", () => {
   for (let cycle = 0; cycle < 341; cycle++) {
     ppu.scanline = -1;
     ppu.cycle = cycle;
-    ppu.registers.ppuStatus.spriteOverflow = 1;
+    ppu.registers.ppuStatus.sprite0Hit = 1;
 
     ppu.step(noop, noop);
 
     if (cycle === 1) {
-      expect(ppu.registers.ppuStatus.spriteOverflow).to.equalN(0, "sprite0Hit");
+      expect(ppu.registers.ppuStatus.sprite0Hit).to.equalN(0, "sprite0Hit");
     } else {
-      expect(ppu.registers.ppuStatus.spriteOverflow).to.equalN(1, "sprite0Hit");
+      expect(ppu.registers.ppuStatus.sprite0Hit).to.equalN(1, "sprite0Hit");
     }
   }
 })({

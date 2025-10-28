@@ -1,6 +1,7 @@
 # Noise Generation
 
 - The 💥 Noise Channel has a 15-bit **shift register** that is clocked periodically.
+- On **power-up**, the shift register is loaded with the value `1`.
 - 🌪️ NoiseForm's bit `7` is the **mode flag**, which affects the noise pattern.
 - 🌪️ NoiseForm's bits `0-3` make an index to a fixed "noise periods" table, which is:
 

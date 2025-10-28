@@ -16,7 +16,7 @@ usage:
   - al colocar un sprite de moneda (el sprite cero) arriba de una moneda en el fondo, la PPU activa un sprite-zero hit cuando esa parte de la pantalla se renderiza
   - esto permite al juego detectar el momento en que la PPU alcanza una scanline específica, y luego cambiar las coordenadas de scrolling a mitad del frame
   responses:
-  - aaah [exercise]
+  - vaya hack [exercise]
 
 exercise:
   run: |

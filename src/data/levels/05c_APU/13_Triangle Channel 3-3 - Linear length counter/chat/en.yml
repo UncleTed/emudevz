@@ -51,7 +51,7 @@ exercise:
   - |-
     📚  implement in 📏  `TriangleLengthControl`:
     **onLoad()**:
-      **->** uses ```javascript this.addField(...)``` to define a 7-bit `linearCounterReload` field from bit 1
+      **->** uses ```javascript this.addField(...)``` to define a 7-bit `linearCounterReload` field from bit 0
     **onWrite(value)**:
       **->** __keep existing behavior__
       **->** assigns the new length to the `reload` property of the channel's linear length counter

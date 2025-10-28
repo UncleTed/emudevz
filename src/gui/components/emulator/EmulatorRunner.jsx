@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import $path from "path-browserify-esm";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import {
 	FaBug,
 	FaExpand,
@@ -183,11 +185,47 @@ export default class EmulatorRunner extends PureComponent {
 							style={{ display: isRunning ? "flex" : "none" }}
 							className={styles.row}
 						>
-							<span className={styles.label}>⚡️</span>
-							<span id="fps" className={styles.label}>
-								00
-							</span>
-							<span className={styles.label}>FPS</span>
+							<OverlayTrigger
+								placement="bottom"
+								overlay={
+									<Tooltip>
+										<div
+											style={{
+												marginTop: 8,
+												marginRight: 8,
+												marginLeft: -8,
+												marginBottom: -8,
+												fontSize: "x-small",
+											}}
+										>
+											<div>
+												<strong>
+													⚡️ {locales.get("performance_tips_title")}:
+												</strong>
+											</div>
+											<ul style={{ textAlign: "left", marginTop: 8 }}>
+												<li>
+													{locales.get("performance_tips_remove_logs_before")}{" "}
+													<code>console.log(...)</code>{" "}
+													{locales.get("performance_tips_remove_logs_after")}
+												</li>
+												<li>
+													{locales.get("performance_tips_write_fast_code")}
+												</li>
+												<li>{locales.get("performance_tips_reload")}</li>
+											</ul>
+										</div>
+									</Tooltip>
+								}
+							>
+								<span>
+									<span className={styles.label}>⚡️</span>
+									<span id="fps" className={styles.label}>
+										00
+									</span>
+									<span className={styles.label}>FPS</span>
+								</span>
+							</OverlayTrigger>
 							<span className={styles.label}>|</span>
 							<InputTypeToggle player={1} className={styles.label} />
 							<InputTypeToggle player={2} className={styles.label} />

@@ -12,9 +12,13 @@ export default class DizzySheepDisaster extends Integration {
 
 		return (
 			<Tooltip
-				title={`${locales.get(
-					"integration_dizzysheepdisaster_level"
-				)} ${level} / ${WIN_LEVEL - 1}`}
+				title={
+					percentage === 100
+						? undefined
+						: `${locales.get(
+								"integration_dizzysheepdisaster_level"
+						  )} ${level} / ${WIN_LEVEL - 1}`
+				}
 			>
 				<div
 					style={{ width: "50%", textAlign: "center", whiteSpace: "nowrap" }}

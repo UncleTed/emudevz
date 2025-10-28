@@ -12,9 +12,13 @@ export default class FelineFloodFiasco extends Integration {
 
 		return (
 			<Tooltip
-				title={`${locales.get("integration_felinefloodfiasco_level")} ${
-					1 + level
-				} / ${WIN_LEVEL}`}
+				title={
+					percentage === 100
+						? undefined
+						: `${locales.get("integration_felinefloodfiasco_level")} ${
+								1 + level
+						  } / ${WIN_LEVEL}`
+				}
 			>
 				<div
 					style={{ width: "50%", textAlign: "center", whiteSpace: "nowrap" }}

@@ -12,9 +12,13 @@ export default class Falling extends Integration {
 
 		return (
 			<Tooltip
-				title={`${locales.get(
-					"integration_falling_points"
-				)} ${points} / ${HIGH_SCORE}`}
+				title={
+					percentage === 100
+						? undefined
+						: `${locales.get(
+								"integration_falling_points"
+						  )} ${points} / ${HIGH_SCORE}`
+				}
 			>
 				<div
 					style={{ width: "50%", textAlign: "center", whiteSpace: "nowrap" }}
