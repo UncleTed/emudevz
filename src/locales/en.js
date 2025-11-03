@@ -158,6 +158,7 @@ export default {
 		"In the year 32767, the world suffered a massive cyber attack which <b>destroyed</b> the entire Internet. Since then, you and an online friend are trying to understand the sparse pieces of documentation about the NEEES, an ancient game console released in 1983. With your programming skills, you'll have to build an emulator that runs those old games, helping preserve the video game history.",
 	ppu: "PPU",
 	press_any_key_to_continue: "⌨️  Press any key to continue.",
+	psa_savefile: "⚠️ PSA: Back up your save file regularly!!!",
 	register_A: "Accumulator Register",
 	register_flags_C: "Carry Flag",
 	register_flags_D: "Decimal Flag",

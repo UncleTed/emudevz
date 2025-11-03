@@ -97,6 +97,8 @@ export default class ChapterSelectModal extends PureComponent {
 							/>
 						</div>
 					)}
+
+					<div className={styles.psa}>{locales.get("psa_savefile")}</div>
 				</Modal.Body>
 			</Modal>
 		);

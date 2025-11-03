@@ -122,24 +122,34 @@ it("includes a `registers` property with 21 audio registers", () => {
 
   const checkRegister = (key, address, read = true, write = true) => {
     const register = _.get(apu.registers, key);
+    const name = `apu.registers.${key}`;
 
-    expect(register, `apu.registers.${key}`).to.be.an("object");
-    expect(register).to.respondTo("onLoad");
-    expect(register).to.respondTo("onRead");
-    expect(register).to.respondTo("onWrite");
-    expect(register).to.respondTo("setValue");
-    expect(register).to.include.key("value");
+    expect(register, name).to.be.an("object");
+    expect(register.apu, name + ".apu").to.equalN(apu);
+    expect(register, name).to.respondTo("onLoad");
+    expect(register, name).to.respondTo("onRead");
+    expect(register, name).to.respondTo("onWrite");
+    expect(register, name).to.respondTo("setValue");
+    expect(register, name).to.include.key("value");
     register.onRead = sinon.spy();
     register.onWrite = sinon.spy();
 
     apu.registers.read(address);
     apu.registers.write(address, 123);
 
-    if (read) expect(register.onRead).to.have.been.calledOnce;
-    else expect(register.onRead).to.not.have.been.called;
+    if (read) {
+      expect(register.onRead, name + ".onRead()").to.have.been.calledOnce;
+    } else {
+      expect(register.onRead, name + ".onRead()").to.not.have.been.called;
+    }
 
-    if (write) expect(register.onWrite).to.have.been.calledWith(123);
-    else expect(register.onWrite).to.not.have.been.called;
+    if (write) {
+      expect(register.onWrite, name + ".onWrite(...)").to.have.been.calledWith(
+        123
+      );
+    } else {
+      expect(register.onWrite, name + ".onWrite(...)").to.not.have.been.called;
+    }
   };
 
   checkRegister("pulses[0].control", 0x4000);

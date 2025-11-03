@@ -46,7 +46,7 @@ howmany:
   - the screen is ~256x240~
   - you need to `plot` exactly 256 pixels for each visible line
   - in real life, the hardware renders one pixel per cycle, but here we'll do all at once (for simplicity)
-  - therefore, you should only render the line when `cycle` is 256
+  - therefore, you should only render the line when `cycle` is 0
   responses:
   - ...questions
 

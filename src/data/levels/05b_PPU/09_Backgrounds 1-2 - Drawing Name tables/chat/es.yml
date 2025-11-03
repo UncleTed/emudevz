@@ -46,7 +46,7 @@ howmany:
   - la pantalla es de ~256x240~
   - necesitas `plot`ear exactamente 256 píxeles para cada línea visible
   - en la vida real, el hardware renderiza un píxel por ciclo, pero aquí lo haremos todo a la vez (por simplicidad)
-  - por lo tanto, solo deberías renderizar la línea cuando `cycle` sea 256
+  - por lo tanto, solo deberías renderizar la línea cuando `cycle` sea 0
   responses:
   - ...questions
 

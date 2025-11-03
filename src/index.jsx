@@ -105,6 +105,13 @@ window.addEventListener(
 	false
 );
 
+// Register service worker for PWA installability
+if ("serviceWorker" in navigator) {
+	window.addEventListener("load", () => {
+		navigator.serviceWorker.register("sw.js").catch(() => {});
+	});
+}
+
 // Update CRT class when the store changes
 const updateCrtClass = () => {
 	const root = document.getElementById("root");

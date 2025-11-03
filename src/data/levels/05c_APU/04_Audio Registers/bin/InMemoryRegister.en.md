@@ -45,6 +45,7 @@ const ppuCtrl = new PPUCtrl(ppu);
 ppuCtrl.onWrite(0b10010010);
 
 ppuCtrl.onRead(); //                 => 0
+ppuCtrl.value; //                    => 146
 ppuCtrl.nameTableId; //              => 2
 ppuCtrl.vramAddressIncrement32; //   => 0
 ppuCtrl.sprite8x8PatternTableId; //  => 0

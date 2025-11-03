@@ -29,3 +29,13 @@
 	border-radius: 8px;
 	background: white;
 }
+
+.psa {
+	text-align: center;
+	margin-top: 16px;
+	font-size: small;
+	color: #e8a931;
+	background: #dcdcdc29;
+	border-radius: 16px;
+	padding: 8px;
+}

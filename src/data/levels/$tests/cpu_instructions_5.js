@@ -32,13 +32,14 @@ it("the CPU can handle <RESET> interrupts", () => {
     else return memoryRead(address);
   };
 
-  cpu.interrupt(interrupt);
+  const returnValue = cpu.interrupt(interrupt);
 
   expect(cpu.stack.pop()).to.equalBin(0b00100000, "pop()");
   expect(cpu.stack.pop16()).to.equalHex(0x1234, "pop16()");
   expect(cpu.cycle).to.equalN(15, "cycle");
   expect(cpu.flags.i).to.equalN(true, "i");
   expect(cpu.pc.getValue()).to.equalHex(0x3125, "getValue()");
+  expect(returnValue).to.equalN(7, "interrupt(...)");
 })({
   locales: {
     es: "la CPU puede manejar interrupciones <RESET>",
@@ -64,13 +65,14 @@ it("the CPU can handle NMI interrupts", () => {
   };
 
   cpu.flags.i = true;
-  cpu.interrupt(interrupt);
+  const returnValue = cpu.interrupt(interrupt);
 
   expect(cpu.stack.pop()).to.equalBin(0b00100100, "pop()");
   expect(cpu.stack.pop16()).to.equalHex(0x1234, "pop16()");
   expect(cpu.cycle).to.equalN(15, "cycle");
   expect(cpu.flags.i).to.equalN(true, "i");
   expect(cpu.pc.getValue()).to.equalHex(0x3125, "getValue()");
+  expect(returnValue).to.equalN(7, "interrupt(...)");
 })({
   locales: {
     es: "la CPU puede manejar interrupciones NMI",
@@ -95,13 +97,14 @@ it("the CPU can handle <IRQ> interrupts", () => {
     else return memoryRead(address);
   };
 
-  cpu.interrupt(interrupt);
+  const returnValue = cpu.interrupt(interrupt);
 
   expect(cpu.stack.pop()).to.equalBin(0b00100000, "pop()");
   expect(cpu.stack.pop16()).to.equalHex(0x1234, "pop16()");
   expect(cpu.cycle).to.equalN(15, "cycle");
   expect(cpu.flags.i).to.equalN(true, "i");
   expect(cpu.pc.getValue()).to.equalHex(0x3125, "getValue()");
+  expect(returnValue).to.equalN(7, "interrupt(...)");
 })({
   locales: {
     es: "la CPU puede manejar interrupciones <IRQ>",
@@ -128,12 +131,13 @@ it("the CPU ignores <IRQ> interrupts if the ~I~ flag is set", () => {
   };
 
   cpu.flags.i = true;
-  cpu.interrupt(interrupt);
+  const returnValue = cpu.interrupt(interrupt);
 
   expect(cpu.sp.getValue()).to.equalHex(sp, "getValue()");
   expect(cpu.flags.i).to.equalN(true, "i");
   expect(cpu.pc.getValue()).to.equalHex(0x1234, "getValue()");
   expect(cpu.cycle).to.equalN(8, "cycle");
+  expect(returnValue).to.equalN(0, "interrupt(...)");
 })({
   locales: {
     es: "la CPU ignora interrupciones <IRQ> si la bandera ~I~ está encendida",

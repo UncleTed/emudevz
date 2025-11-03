@@ -11,6 +11,7 @@ import {
 	FaMusic,
 	FaPause,
 	FaPlay,
+	FaSave,
 	FaTrash,
 } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -18,7 +19,7 @@ import classNames from "classnames";
 import _ from "lodash";
 import Level from "../../../level/Level";
 import locales from "../../../locales";
-import { bus } from "../../../utils";
+import { bus, savefile } from "../../../utils";
 import music from "../../sound/music";
 import CalculatorModal from "../modals/CalculatorModal";
 import FreeModeSettingsModal from "../modals/FreeModeSettingsModal";
@@ -28,6 +29,8 @@ import IconButton from "./IconButton";
 import ProgressList from "./ProgressList";
 import VolumeSlider from "./VolumeSlider";
 import styles from "./NavBar.module.css";
+
+const SAVEFILE_EXTENSION = ".devz";
 
 class NavBar extends PureComponent {
 	state = {
@@ -161,6 +164,12 @@ class NavBar extends PureComponent {
 								this._onMusicChange(() => music.previous());
 							}}
 						/>
+						<IconButton
+							style={{ marginLeft: 8 }}
+							Icon={FaSave}
+							tooltip={locales.get("backup")}
+							onClick={() => this._backUp()}
+						/>
 						{book.canReset(level) && !isSpecialLevel && (
 							<IconButton
 								style={{ marginLeft: 8 }}
@@ -213,6 +222,11 @@ class NavBar extends PureComponent {
 
 	_closeFreeModeSettings = () => {
 		this.setState({ isFreeModeSettingsOpen: false });
+	};
+
+	_backUp = async () => {
+		const filename = new Date().toJSON().split("T")[0] + SAVEFILE_EXTENSION;
+		await savefile.export(filename);
 	};
 
 	_openLevelHistory = () => {

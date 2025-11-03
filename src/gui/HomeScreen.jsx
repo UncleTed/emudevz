@@ -299,6 +299,18 @@ class HomeScreen extends PureComponent {
 	};
 
 	_play = () => {
+		// Request persistent storage to reduce risk of IndexedDB eviction
+		if (navigator.storage && navigator.storage.persist) {
+			navigator.storage
+				.persist()
+				.then((success) => {
+					console.info("📑 Persistent storage: ", success);
+				})
+				.catch(() => {
+					console.warn("⚠️ Failed to request persistent storage");
+				});
+		}
+
 		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 		const isSafari = /^((?!chrome|chromium|android).)*safari/i.test(userAgent);
 		if (isSafari) {

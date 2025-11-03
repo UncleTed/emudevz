@@ -397,7 +397,7 @@ class AudioRegisters {
 		}));
 
 		this.triangle = {
-			lengthControl: new TriangleLengthControl(apu), //           $4008
+			lengthControl: new TriangleLengthControl(apu), //   $4008
 			timerLow: new TriangleTimerLow(apu), //             $400A
 			timerHighLCL: new TriangleTimerHighLCL(apu), //      $400B
 		};

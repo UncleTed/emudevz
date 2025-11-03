@@ -6,11 +6,12 @@ APP_NAME="emudevz"
 
 USERNAME="$1"
 TOKEN="$2"
-REPO="https://$USERNAME:$TOKEN@github.com/$USERNAME/$APP_NAME"
+SUFFIX="$3"
+REPO="https://$USERNAME:$TOKEN@github.com/$USERNAME/$APP_NAME$SUFFIX"
 
 function show_usage {
 	echo "Usage example:"
-	echo "./deploy.sh <GITHUB_USERNAME> <GITHUB_TOKEN>"
+	echo "./deploy.sh <GITHUB_USERNAME> <GITHUB_TOKEN> [-test]"
 }
 
 if [ -z "$USERNAME" ] || [ -z "$TOKEN" ] ; then

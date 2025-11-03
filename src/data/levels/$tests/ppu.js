@@ -330,23 +330,27 @@ it("includes a `registers` property with 9 video registers", () => {
     "ppuAddr",
     "ppuData",
     "oamDma",
-  ].forEach((name, i) => {
-    const register = ppu.registers[name];
+  ].forEach((key, i) => {
+    const register = ppu.registers[key];
+    const name = `apu.registers.${key}`;
 
-    expect(register).to.be.an("object");
-    expect(register).to.respondTo("onLoad");
-    expect(register).to.respondTo("onRead");
-    expect(register).to.respondTo("onWrite");
-    expect(register).to.respondTo("setValue");
-    expect(register).to.include.key("value");
+    expect(register, name).to.be.an("object");
+    expect(register.ppu, name + ".ppu").to.equalN(ppu, "ppu");
+    expect(register, name).to.respondTo("onLoad");
+    expect(register, name).to.respondTo("onRead");
+    expect(register, name).to.respondTo("onWrite");
+    expect(register, name).to.respondTo("setValue");
+    expect(register, name).to.include.key("value");
     register.onRead = sinon.spy();
     register.onWrite = sinon.spy();
 
-    const address = name === "oamDma" ? 0x4014 : 0x2000 + i;
+    const address = key === "oamDma" ? 0x4014 : 0x2000 + i;
     ppu.registers.read(address);
     ppu.registers.write(address, 123);
-    expect(register.onRead).to.have.been.calledOnce;
-    expect(register.onWrite).to.have.been.calledWith(123);
+    expect(register.onRead, name + ".onRead()").to.have.been.calledOnce;
+    expect(register.onWrite, name + ".onWrite(...)").to.have.been.calledWith(
+      123
+    );
   });
 })({
   locales: {
@@ -989,6 +993,10 @@ it("`PPUAddr`: writes the MSB first, then the LSB", () => {
   ppuAddr.onWrite(0x56);
   expect(ppuAddr.address).to.equalHex(0x5634, "address");
   expect(ppuAddr.latch).to.equalN(true, "latch");
+
+  ppuAddr.onWrite(0x0a);
+  expect(ppuAddr.address).to.equalHex(0x560a, "address");
+  expect(ppuAddr.latch).to.equalN(false, "latch");
 })({
   locales: {
     es: "`PPUAddr`: escribe primero el MSB, luego el LSB",
@@ -996,7 +1004,7 @@ it("`PPUAddr`: writes the MSB first, then the LSB", () => {
   use: ({ id }, book) => id >= book.getId("5b.8") && id < book.getId("5b.23"),
 });
 
-it("`PPUData`: writes the value to VRAM using `PPUAddr::address`", () => {
+it("`PPUData`: writes the value to PPU memory using `PPUAddr::address`", () => {
   const PPU = mainModule.default.PPU;
   const ppu = new PPU({});
   ppu.memory?.onLoad?.(dummyCartridge, dummyMapper);
@@ -1012,7 +1020,8 @@ it("`PPUData`: writes the value to VRAM using `PPUAddr::address`", () => {
   expect(ppu.memory.read(0x2023)).to.equalN(value, "read(0x2023)");
 })({
   locales: {
-    es: "`PPUData`: escribe el valor en VRAM usando `PPUAddr::address`",
+    es:
+      "`PPUData`: escribe el valor en la memoria PPU usando `PPUAddr::address`",
   },
   use: ({ id }, book) => id >= book.getId("5b.8"),
 });
