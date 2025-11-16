@@ -1,5 +1,4 @@
-// import byte from "/lib/byte.js";
-import byte from "../src/utils/byte.js";
+import byte from "../lib/byte.js";
 
 export default class Cartridge {
 	constructor(bytes) {
@@ -13,10 +12,7 @@ export default class Cartridge {
 	}
 
 	prg() {
-		let startingPosition = 16;
-		if (this.header.has512BytePadding) {
-			startingPosition += 512;
-		}
+		let startingPosition = this._getPrgStartingPosition();
 		return new Uint8Array(
 			this.bytes.slice(
 				startingPosition,
@@ -25,6 +21,33 @@ export default class Cartridge {
 		);
 	}
 
+	chr() {
+		if (this.header.chrRomPages > 0) {
+			let startingPosition = this._getChrStartingPosition();
+			return new Uint8Array(
+				this.bytes.slice(
+					startingPosition,
+					startingPosition + 8192 * this.header.chrRomPages
+				)
+			);
+		} else {
+			return new Uint8Array(8192);
+		}
+	}
+
+	_getChrStartingPosition() {
+		if (this.header.chrRomPages > 0) {
+			return this._getPrgStartingPosition() + 16384 * this.header.prgRomPages;
+		}
+	}
+
+	_getPrgStartingPosition() {
+		let startingPosition = 16;
+		if (this.header.has512BytePadding) {
+			startingPosition += 512;
+		}
+		return startingPosition;
+	}
 	_checkMagicConstant(bytes) {
 		let MAGIC_CONSTANT = [0x4e, 0x45, 0x53, 0x1a];
 		for (let i = 0; i < 4; i++) {

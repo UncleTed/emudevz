@@ -1,7 +1,7 @@
 // 3.3 The magic constant
 import { expect } from "chai";
+import Cartridge from "../code/Cartridge.js";
 import byte from "../src/utils/byte.js";
-import Cartridge from "./myCartridge.js";
 
 it("instantiating a `Cartridge` with a <valid header> saves a `bytes` property", () => {
 	const bytes = new Uint8Array([0x4e, 0x45, 0x53, 0x1a]);
